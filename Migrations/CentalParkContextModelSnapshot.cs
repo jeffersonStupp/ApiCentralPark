@@ -17,7 +17,7 @@ namespace ApiCentralPark.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.5")
+                .HasAnnotation("ProductVersion", "7.0.8")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -145,33 +145,6 @@ namespace ApiCentralPark.Migrations
                             Senha = "0411vm",
                             Tipo = "administrador"
                         });
-                });
-
-            modelBuilder.Entity("ApiCentralPark.Models.Veiculo", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("HoraEntrada")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("HoraSaida")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("Pessoa")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Placa")
-                        .IsRequired()
-                        .HasMaxLength(8)
-                        .HasColumnType("nvarchar(8)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("VEICULOS", (string)null);
                 });
 #pragma warning restore 612, 618
         }
