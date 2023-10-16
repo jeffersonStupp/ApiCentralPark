@@ -4,6 +4,7 @@ using ApiCentralPark.Database.Contexto;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ApiCentralPark.Migrations
 {
     [DbContext(typeof(CentalParkContext))]
-    partial class CentalParkContextModelSnapshot : ModelSnapshot
+    [Migration("20230712015818_AdicionandoVeiculos")]
+    partial class AdicionandoVeiculos
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -149,11 +152,9 @@ namespace ApiCentralPark.Migrations
 
             modelBuilder.Entity("ApiCentralPark.Models.Veiculo", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.Property<string>("Placa")
+                        .HasMaxLength(8)
+                        .HasColumnType("nvarchar(8)");
 
                     b.Property<DateTime>("HoraEntrada")
                         .HasColumnType("datetime2");
@@ -164,12 +165,7 @@ namespace ApiCentralPark.Migrations
                     b.Property<int?>("Pessoa")
                         .HasColumnType("int");
 
-                    b.Property<string>("Placa")
-                        .IsRequired()
-                        .HasMaxLength(8)
-                        .HasColumnType("nvarchar(8)");
-
-                    b.HasKey("Id");
+                    b.HasKey("Placa");
 
                     b.ToTable("VEICULOS", (string)null);
                 });

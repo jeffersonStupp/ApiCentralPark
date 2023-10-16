@@ -35,6 +35,13 @@ namespace ApiCentralPark.Database.Repositorio.Helpers
         {
             return telefone = telefone.Insert(0, "(").Insert(3, ")").Insert(9, "-");
         }
+        public static string FormatarPlaca(string placa)
+        {
+            if (placa.Contains("-"))
+                return placa;
+
+            return placa = placa.ToUpper().Insert(3, "-");
+        }
 
 
     }

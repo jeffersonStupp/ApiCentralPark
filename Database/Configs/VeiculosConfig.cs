@@ -9,8 +9,8 @@ namespace ApiCentralPark.Database.Configs
         public void Configure(EntityTypeBuilder<Veiculo> builder)
         {
             builder.ToTable("VEICULOS");
-            builder.HasKey(x => x.Placa);
-            builder.Property(x => x.Placa).HasMaxLength(8);
+            builder.HasKey(x => x.Id);
+            builder.Property(x => x.Placa).HasMaxLength(8).IsRequired();
             builder.Property(x => x.HoraEntrada).IsRequired();
             
 
