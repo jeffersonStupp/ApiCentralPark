@@ -8,12 +8,12 @@ namespace ApiCentralPark.Database.Configs
     {
         public void Configure(EntityTypeBuilder<Usuario> builder)
         {
-            builder.ToTable("Usuarios");
+            builder.ToTable("USUARIOS");
 
             builder.HasKey(p => p.Id);
             builder.Property(p => p.Id).UseIdentityColumn();
 
-            // mapeando as propriedades
+            
             builder.Property(x => x.NomeUsuario)
                 .IsRequired()
                 .HasMaxLength(150);
@@ -37,7 +37,6 @@ namespace ApiCentralPark.Database.Configs
 
             builder.HasData(new List<Usuario>()
         {
-            //migrationBuilder.Sql("INSERT INTO Usuarios (NomeUsuario, Email, Senha) VALUES ('admin', 'admin@email.com', 'admin');");
             new Usuario() { Id = 1, NomeUsuario = "usuario", Email = "usuario@email.com", Senha = "usuario", Tipo = "usuario" },
             new Usuario() { Id = 2, NomeUsuario = "Jefferson", Email = "jeffersonstupp@hotmail.com", Senha = "0411vm", Tipo = "administrador" }
         });

@@ -1,12 +1,19 @@
 ﻿using System.Globalization;
 using System.Text.RegularExpressions;
 
-namespace ApiCentralPark.Database.Repositorio.Helpers
+namespace ApiCentralPark.Data.Repositorio.Formatadores
 {
-    public class Helper
+    public class Formatador
     {
+        public static string FormatarPlaca(string placa)
+        {
+            placa = Regex.Replace(placa, "[^a-zA-Z0-9 ]", "").ToUpper().Insert(3, "-");
 
 
+            return placa;
+
+
+        }
         public static string RemoverCaracteres(string nome)
         {
             return nome = Regex.Replace(nome, @"[^a-zA-Z0-9\s]", "");

@@ -9,7 +9,7 @@ namespace ApiCentralPark.Database.Repositorio
         {
             using (var bancoDeDados = new CentalParkContext())
             {
-                bancoDeDados.UsuariosDatabase.Add(usuario);
+                bancoDeDados.USUARIOS.Add(usuario);
                 bancoDeDados.SaveChanges();
                 return usuario;
             }
@@ -19,7 +19,7 @@ namespace ApiCentralPark.Database.Repositorio
         {
             using (var bancoDeDados = new CentalParkContext())
             {
-                bancoDeDados.UsuariosDatabase.Update(usuario);
+                bancoDeDados.USUARIOS.Update(usuario);
                 bancoDeDados.SaveChanges();
                 return usuario;
             }
@@ -29,7 +29,7 @@ namespace ApiCentralPark.Database.Repositorio
         {
             using (var bancoDeDados = new CentalParkContext())
             {
-                var usuario = bancoDeDados.UsuariosDatabase.Where(u => u.Id == id).FirstOrDefault();
+                var usuario = bancoDeDados.USUARIOS.Where(u => u.Id == id).FirstOrDefault();
 
                 if (usuario != null)
                 {
@@ -43,7 +43,7 @@ namespace ApiCentralPark.Database.Repositorio
         {
             using (var bancoDeDados = new CentalParkContext())
             {
-                var usuario = bancoDeDados.UsuariosDatabase.Where(u => u.Id == id).FirstOrDefault();
+                var usuario = bancoDeDados.USUARIOS.Where(u => u.Id == id).FirstOrDefault();
 
                 return usuario;
             }
@@ -53,7 +53,7 @@ namespace ApiCentralPark.Database.Repositorio
         {
             using (var bancoDeDados = new CentalParkContext())
             {
-                var listaUsuarios = bancoDeDados.UsuariosDatabase.ToList();
+                var listaUsuarios = bancoDeDados.USUARIOS.ToList();
 
                 return listaUsuarios;
             }
@@ -63,7 +63,7 @@ namespace ApiCentralPark.Database.Repositorio
         {
             using (var bancoDeDados = new CentalParkContext())
             {
-                var usuario = bancoDeDados.UsuariosDatabase.Where(u => u.Email.ToLower() == email.ToLower()).FirstOrDefault();
+                var usuario = bancoDeDados.USUARIOS.Where(u => u.Email.ToLower() == email.ToLower()).FirstOrDefault();
                 return usuario != null;
             }
         }
@@ -72,7 +72,7 @@ namespace ApiCentralPark.Database.Repositorio
         {
             using (var bancoDeDados = new CentalParkContext())
             {
-                var usuario = bancoDeDados.UsuariosDatabase.Where(u => u.NomeUsuario == nomeUsuarioOuEmail
+                var usuario = bancoDeDados.USUARIOS.Where(u => u.NomeUsuario == nomeUsuarioOuEmail
                                                                      || u.Email == nomeUsuarioOuEmail).FirstOrDefault();
                 return usuario;
             }

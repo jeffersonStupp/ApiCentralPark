@@ -1,5 +1,5 @@
-﻿using ApiCentralPark.Database.Contexto;
-using ApiCentralPark.Database.Repositorio.Helpers;
+﻿using ApiCentralPark.Data.Repositorio.Formatadores;
+using ApiCentralPark.Database.Contexto;
 using ApiCentralPark.Models;
 
 namespace ApiCentralPark.Database.Repositorio
@@ -10,9 +10,9 @@ namespace ApiCentralPark.Database.Repositorio
         {
             using (var banco = new CentalParkContext())
             {
-                pessoa.Nome = Helper.RemoverCaracteres(pessoa.Nome);
-                pessoa.Nome = Helper.TitleCase(pessoa.Nome);
-                banco.PessoasDatabase.Add(pessoa);
+                pessoa.Nome = Formatador.RemoverCaracteres(pessoa.Nome);
+                pessoa.Nome = Formatador.TitleCase(pessoa.Nome);
+                banco.PESSOAS.Add(pessoa);
                 banco.SaveChanges();
             }
             return pessoa;
@@ -22,9 +22,9 @@ namespace ApiCentralPark.Database.Repositorio
         {
             using (var banco = new CentalParkContext())
             {
-                pessoa.Nome = Helper.RemoverCaracteres(pessoa.Nome);
-                pessoa.Nome = Helper.TitleCase(pessoa.Nome);
-                banco.PessoasDatabase.Update(pessoa);
+                pessoa.Nome = Formatador.RemoverCaracteres(pessoa.Nome);
+                pessoa.Nome = Formatador.TitleCase(pessoa.Nome);
+                banco.PESSOAS.Update(pessoa);
                 banco.SaveChanges();
             }
             return pessoa;
@@ -34,7 +34,7 @@ namespace ApiCentralPark.Database.Repositorio
         {
             using (var banco = new CentalParkContext())
             {
-                var pessoa = banco.PessoasDatabase.Where(pessoa => pessoa.Id == id).FirstOrDefault();
+                var pessoa = banco.PESSOAS.Where(pessoa => pessoa.Id == id).FirstOrDefault();
                 if (pessoa != null)
                 {
                     banco.Remove(pessoa);
@@ -48,7 +48,7 @@ namespace ApiCentralPark.Database.Repositorio
             using (var banco = new CentalParkContext())
             {
                 {
-                    var listaPessoas = banco.PessoasDatabase.ToList();
+                    var listaPessoas = banco.PESSOAS.ToList();
                     return listaPessoas;
                 }
             }
@@ -58,7 +58,7 @@ namespace ApiCentralPark.Database.Repositorio
         {
             using (var banco = new CentalParkContext())
             {
-                var pessoa = banco.PessoasDatabase
+                var pessoa = banco.PESSOAS
                     .Where(pessoa => pessoa.Id == id)
                     .FirstOrDefault();
 
